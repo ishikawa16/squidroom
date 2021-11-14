@@ -5,7 +5,7 @@ from .forms import CustomUserCreationForm
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
-    template_name = "accounts/signup.html"
+    template_name = 'accounts/signup.html'
     success_url = reverse_lazy('accounts:signup_success')
 
     def form_valid(self, form):
@@ -15,4 +15,4 @@ class SignUpView(CreateView):
 
 
 class SignUpSuccessView(TemplateView):
-    template_name = "accounts/signup_success.html"
+    template_name = 'accounts/signup_success.html'
