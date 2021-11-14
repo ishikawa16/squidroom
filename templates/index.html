@@ -6,6 +6,12 @@
     </head>
     <body>
         <h1>Top</h1>
-        <p><a href="{% url 'accounts:signup' %}">Sign up</a><p>
+        {% if user.is_authenticated %}
+            <p>Logged in as {{ user.username }}</p>
+            <p><a href="{% url 'accounts:logout' %}">Log out</a></p>
+        {% else %}
+            <p><a href="{% url 'accounts:signup' %}">Sign up</a></p>
+            <p><a href="{% url 'accounts:login' %}">Log in</a></p>
+        {% endif %}
     </body>
 </html>
