@@ -8,8 +8,11 @@
         <h1>Top</h1>
         {% if user.is_authenticated %}
             <p>Logged in as {{ user.username }}</p>
+            <p><a href="{% url 'players:player_detail' user.pk %}">My page</a></p>
+            <p><a href="{% url 'players:player_list' %}">Player list</a></p>
             <p><a href="{% url 'accounts:logout' %}">Log out</a></p>
         {% else %}
+            <p><a href="{% url 'players:player_list' %}">Player list</a></p>
             <p><a href="{% url 'accounts:signup' %}">Sign up</a></p>
             <p><a href="{% url 'accounts:login' %}">Log in</a></p>
         {% endif %}
