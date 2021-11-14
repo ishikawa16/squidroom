@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Player list</title>
+    </head>
+    <body>
+        <h1>Player list</h1>
+        {% for player in player_list %}
+            <p><a href="{% url 'players:player_detail' player.pk %}">{{ player.username }}</a></p>
+        {% endfor %}
+    </body>
+</html>
