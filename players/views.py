@@ -4,6 +4,7 @@ from accounts.models import CustomUser
 
 class PlayerListView(ListView):
     model = CustomUser
+    ordering = '-rate'
     template_name = 'players/player_list.html'
     context_object_name = 'player_list'
 
