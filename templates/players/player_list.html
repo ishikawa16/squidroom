@@ -7,7 +7,8 @@
     <body>
         <h1>Player list</h1>
         {% for player in player_list %}
-            <p><a href="{% url 'players:player_detail' player.pk %}">{{ player.username }}</a></p>
+            <p>Name: <a href="{% url 'players:player_detail' player.pk %}">{{ player.username }}</a>, Rate: {{ player.rate }}</p>
         {% endfor %}
+        <p><a href="{% url 'index' %}">Top</a></p>
     </body>
 </html>
