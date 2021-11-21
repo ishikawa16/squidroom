@@ -2,6 +2,7 @@
 Platform for 1 on 1 battles of Splatoon.
 
 ## Requirement
+* Python 3.9.6
 * Django 3.2.9
 
 ## Installation
