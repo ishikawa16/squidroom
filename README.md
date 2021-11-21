@@ -14,6 +14,9 @@ pip install -r requirements.txt
 ```
 git clone https://github.com/ishikawa16/squidroom.git
 cd squidroom
+python manage.py makemigrations accounts
+python manage.py makemigrations players
+python manage.py makemigrations rooms
 python manage.py migrate
 python manage.py runserver
 ```
