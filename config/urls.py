@@ -22,4 +22,5 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('accounts/', include('accounts.urls')),
     path('players/', include('players.urls')),
+    path('rooms/', include('rooms.urls')),
 ]
