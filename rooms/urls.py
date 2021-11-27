@@ -4,6 +4,6 @@ from . import views
 app_name = 'rooms'
 
 urlpatterns = [
-    path('standby/', views.StandbyView.as_view(), name='standby'),
+    path('battle/', views.BattleView.as_view(), name='battle'),
     path('cancel/', views.CancelView.as_view(), name='cancel'),
 ]

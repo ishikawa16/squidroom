@@ -2,8 +2,8 @@ from django.views.generic import TemplateView
 from .models import Room
 
 
-class StandbyView(TemplateView):
-    template_name = 'rooms/standby.html'
+class BattleView(TemplateView):
+    template_name = 'rooms/battle.html'
 
     def get(self, request, *args, **kargs):
         Room.objects.create(player=request.user)
