@@ -11,12 +11,26 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+1. Clone repository.
 ```
 git clone https://github.com/ishikawa16/squidroom.git
-cd squidroom
+```
+
+2. Generate secret key.
+```
+cd squidroom/config
+python generate_secretkey_setting.py > local_settings.py
+```
+
+3. Initialize databases.
+```
+cd ..
 python manage.py makemigrations accounts
-python manage.py makemigrations players
 python manage.py makemigrations rooms
 python manage.py migrate
+```
+
+4. Set up server.
+```
 python manage.py runserver
 ```
