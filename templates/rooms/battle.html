@@ -2,10 +2,16 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Standby</title>
+        <title>Battle</title>
     </head>
     <body>
-        <h1>Standby</h1>
-        <p><a href="{% url 'rooms:cancel' %}">Cancel</a></p>
+        {% if not room.player2 %}
+            <h1>Now waiting...</h1>
+            <p>{{ room.player1 }} vs.</p>
+            <p><a href="{% url 'rooms:cancel' %}">Cancel</a></p>
+        {% else %}
+            <h1>Let's battle!</h1>
+            <p>{{ room.player1 }} vs. {{ room.player2 }}</p>
+        {% endif %}
     </body>
 </html>
