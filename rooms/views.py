@@ -4,6 +4,14 @@ from django.views.generic import TemplateView
 from .models import Room
 
 
+def calculate_rate(ri, rj):
+    d = ri - rj
+    e = 1 / (1 + 10 ** (-d / 400))
+    new_ri = ri + 32 * (1 - e)
+    new_rj = rj + 32 * (e - 1)
+    return new_ri, new_rj
+
+
 class BattleView(TemplateView):
     template_name = 'rooms/battle.html'
 
@@ -26,12 +34,24 @@ class BattleView(TemplateView):
 
     def post(self, request, *args, **kargs):
         room = Room.objects.get(Q(player1=self.request.user) | Q(player2=self.request.user), winner=None)
+        p1, p2 = room.player1, room.player2
+        r1, r2 = p1.rate, p2.rate
 
         if 'player1' in request.POST:
+            new_r1, new_r2 = calculate_rate(r1, r2)
+            p1.rate = new_r1
+            p1.save()
+            p2.rate = new_r2
+            p2.save()
             room.winner = room.player1
             room.save()
 
         if 'player2' in request.POST:
+            new_r2, new_r1 = calculate_rate(r2, r1)
+            p1.rate = new_r1
+            p1.save()
+            p2.rate = new_r2
+            p2.save()
             room.winner = room.player2
             room.save()
 
