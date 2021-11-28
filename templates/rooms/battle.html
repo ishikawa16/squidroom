@@ -12,6 +12,12 @@
         {% else %}
             <h1>Let's battle!</h1>
             <p>{{ room.player1 }} vs. {{ room.player2 }}</p>
+            <p>Who wins?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="player1">{{ room.player1 }}</button>
+                <button type="submit" name="player2">{{ room.player2 }}</button>
+            </form>
         {% endif %}
     </body>
 </html>

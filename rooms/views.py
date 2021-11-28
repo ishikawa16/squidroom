@@ -1,3 +1,5 @@
+from django.db.models import Q
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from .models import Room
 
@@ -21,6 +23,19 @@ class BattleView(TemplateView):
             context = super().get_context_data(**kwargs)
             context['room'] = room
             return context
+
+    def post(self, request, *args, **kargs):
+        room = Room.objects.get(Q(player1=self.request.user) | Q(player2=self.request.user), winner=None)
+
+        if 'player1' in request.POST:
+            room.winner = room.player1
+            room.save()
+
+        if 'player2' in request.POST:
+            room.winner = room.player2
+            room.save()
+
+        return redirect('/')
 
 
 class CancelView(TemplateView):
